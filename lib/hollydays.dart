@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
-import 'dart:js_interop';
-import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:integradora/utils.dart';
 
 class HollydayList extends StatefulWidget {
   const HollydayList({super.key});
@@ -37,11 +35,17 @@ class HollydayListState extends State<HollydayList> {
   }
 
   Widget buildEntry(BuildContext context, int index) {
-    return Card(
-      child: ListTile(
-        leading: const Icon(Icons.calendar_today),
-        title: Text(hollydays[index]['date'] ?? 'Error'),
-        subtitle: Text(hollydays[index]['name'] ?? 'Error'),
+    return GestureDetector(
+      onDoubleTap: makeGoto('/details', context, args: {
+        'text': hollydays[index]['description'],
+        'image': hollydays[index]['image']
+      }),
+      child: Card(
+        child: ListTile(
+          leading: const Icon(Icons.calendar_today),
+          title: Text(hollydays[index]['date'] ?? 'Error'),
+          subtitle: Text(hollydays[index]['name'] ?? 'Error'),
+        ),
       ),
     );
   }

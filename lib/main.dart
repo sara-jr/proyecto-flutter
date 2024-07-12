@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integradora/details.dart';
 import 'package:integradora/home.dart';
 import 'package:integradora/hollydays.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         '/dates': (context) => const HollydayList(),
+        '/details': (context) => const DetailsScreen(),
       },
     );
   }
