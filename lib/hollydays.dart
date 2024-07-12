@@ -1,27 +1,47 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:js_interop';
+import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
 
-class HollydayList extends StatelessWidget {
-  HollydayList({super.key});
-  final hollydays = <Map>[
-    <String, String>{'date': '16/09', 'name': 'Día de inicio de independencia'},
-    <String, String>{
-      'date': '27/09',
-      'name': 'Consumación de la independencia'
-    },
-    <String, String>{'date': '02/10', 'name': 'Día de muertos'},
-    <String, String>{
-      'date': '20/10',
-      'name': 'Conmemoración de la revolución mexicana'
-    },
-    <String, String>{'date': '01/05', 'name': 'Día del trabajador'},
-  ];
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class HollydayList extends StatefulWidget {
+  const HollydayList({super.key});
+
+  @override
+  State<StatefulWidget> createState() => HollydayListState();
+}
+
+class HollydayListState extends State<HollydayList> {
+  List<Map<String, String>> hollydays = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadHollydays();
+  }
+
+  void loadHollydays() async {
+    List<Map<String, String>> newHollydays;
+    try {
+      final rawJson =
+          await json.decode(await rootBundle.loadString('hollydays.json'));
+      newHollydays = List.from(rawJson.map((e) => Map<String, String>.from(e)));
+    } catch (exception) {
+      return;
+    }
+    setState(() {
+      hollydays = newHollydays;
+    });
+  }
 
   Widget buildEntry(BuildContext context, int index) {
     return Card(
       child: ListTile(
         leading: const Icon(Icons.calendar_today),
-        title: Text(hollydays[index]['date']),
-        subtitle: Text(hollydays[index]['name']),
+        title: Text(hollydays[index]['date'] ?? 'Error'),
+        subtitle: Text(hollydays[index]['name'] ?? 'Error'),
       ),
     );
   }

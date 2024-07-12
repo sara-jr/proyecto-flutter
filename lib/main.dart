@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        '/dates': (context) => HollydayList(),
+        '/dates': (context) => const HollydayList(),
       },
     );
   }
