@@ -1,0 +1,27 @@
+[
+    {
+        'date': '16/09',
+        'name': 'Día de inicio de independencia',
+        'description': "La madrugada del 16 de septiembre de 1810, El cura Don Miguel Hidalgo y Costilla convocó al pueblo de Dolores Hidalgo, a través del repique de las campanas de su iglesia, a levantarse en armas en contra del dominio de los españoles.\n El periodo de nuestra historia conocido como la Guerra de Independencia empieza (estrictamente hablando) la madrugada del 16 de septiembre de 1810, cuando el padre Miguel Hidalgo da el llamado “Grito de Dolores” y termina el 27 de septiembre de 1821 (11 años después) con la entrada triunfal del Ejército Trigarante, encabezado por Agustín de Iturbide y Vicente Guerrero, a una jubilosa Ciudad de México. El objetivo principal de este movimiento (armado y social) era liberar a nuestro territorio del yugo español y que, en cada rincón de la Colonia se olvidase por completo el concepto de virreinato."
+    },
+    {
+        'date': '27/09',
+        'name': 'Consumación de la independencia',
+        'description': "Una vez que Iturbide logró establecer la paz con los insurgentes, comenzó su campaña epistolar. Envió una carta a Juan José Espinosa de los Monteros con el borrador del plan. Con la finalidad de ganar más adeptos, mandó emisarios para explicar sus intenciones a los comandantes realistas Pedro Celestino Negrete, Anastasio Bustamante y Luis Cortazar. Se reunió personalmente en Sultepec con el teniente coronel Miguel Torres. El compadre de Iturbide, Juan Gómez Navarrete, informó a los diputados, que se encontraban en Veracruz a punto de zarpar hacia España, el plan que se iba a proclamar. La mayor parte de ellos recibió con desconfianza la noticia."
+    },
+    {
+        'date': '02/10',
+        'name': 'Día de muertos',
+        'description': "En el Estado de México la celebración de día de muertos inicia desde el 31 de octubre, los panteones comienzan a estar llenos de personas que van a decorar y limpiar las tumbas de los infantes que fallecieron. Al día siguiente es el turno de decorar los mausoleos y lápidas de los adultos, es común ver Mariachis y tríos ofreciendo sus servicios para poder alegrar el rato. Algunos municipios del Estado de México organizan programas culturales para celebrar este día. Toluca por su parte organiza un desfile, amenizado por monumentales figuras de Catrinas, Adelitas y del dios Quetzalcóatl, así como mojigangas y cabezones creados por artesanos de San Pablo Autopan."
+    },
+    {
+      'date': '20/10',
+      'name': 'Conmemoración de la revolución mexicana',
+      'description': "La Revolución mexicana fue un conflicto armado en México que se inició el 20 de noviembre de 1910 y terminó el 1 de diciembre de 1920. Los antecedentes del conflicto se remontan a la situación de México bajo la dictadura conocida como el porfiriato. Porfirio Díaz ejerció el poder en el país de manera dictatorial desde 1876 hasta 1911. Durante estos 35 años, México experimentó un notable crecimiento económico y tuvo estabilidad política, pero estos logros se realizaron con altos costos sociales, que pagaron los estratos menos favorecidos de la sociedad y la oposición política al régimen de Díaz. Durante la primera década del siglo XX estallaron varias crisis en diversas esferas de la vida nacional, que reflejaban el creciente descontento de algunos sectores con el porfiriato."
+    },
+    {
+        'date': '01/05', 
+        'name': 'Día del trabajador',
+        'description': "El Día Internacional de los Trabajadores o Primero de Mayo es la conmemoración del movimiento obrero mundial. Es una jornada que se ha utilizado, habitualmente, para realizar diferentes reivindicaciones sociales y laborales a favor de las clases trabajadoras. Es día festivo nacional en la mayoría de países."
+    },
+]
