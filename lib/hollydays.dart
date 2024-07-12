@@ -23,8 +23,8 @@ class HollydayListState extends State<HollydayList> {
   void loadHollydays() async {
     List<Map<String, String>> newHollydays;
     try {
-      final rawJson =
-          await json.decode(await rootBundle.loadString('hollydays.json'));
+      final rawJson = await json.decode(await DefaultAssetBundle.of(context)
+          .loadString('assets/hollydays.json'));
       newHollydays = List.from(rawJson.map((e) => Map<String, String>.from(e)));
     } catch (exception) {
       return;
@@ -38,7 +38,8 @@ class HollydayListState extends State<HollydayList> {
     return GestureDetector(
       onDoubleTap: makeGoto('/details', context, args: {
         'text': hollydays[index]['description'],
-        'image': hollydays[index]['image']
+        'image': hollydays[index]['image'],
+        'title': hollydays[index]['name']
       }),
       child: Card(
         child: ListTile(
@@ -53,6 +54,9 @@ class HollydayListState extends State<HollydayList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Fechas'),
+      ),
       body: ListView.builder(
         itemBuilder: buildEntry,
         itemCount: hollydays.length,
