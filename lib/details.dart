@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -9,7 +10,27 @@ class DetailsScreen extends StatelessWidget {
     Map<String, String> args = Map<String, String>.from(rawArgs);
     return Scaffold(
         appBar: AppBar(
-          title: Text(args['title'] ?? 'Titulo no provisto'),
+          title: Text(
+            args['title'] ?? 'Titulo no provisto',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.orangeAccent,
+              letterSpacing: 2,
+              fontSize: 20,
+            ),
+          )
+              .animate()
+              .fadeIn(duration: 600.ms, curve: Curves.easeOutQuad)
+              .scale(
+                begin: Offset(0.5, 0.5),
+                end: Offset(1, 1),
+                duration: 600.ms,
+                curve: Curves.easeOutBack,
+              )
+              .shimmer(
+                duration: 1200.ms,
+                color: Colors.blue.withOpacity(0.3),
+              ),
         ),
         body: SingleChildScrollView(
           child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:integradora/details.dart';
+import 'package:integradora/flowers.dart';
 import 'package:integradora/home.dart';
 import 'package:integradora/hollydays.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomePage(),
         '/dates': (context) => const HollydayList(),
         '/details': (context) => const DetailsScreen(),
+        '/flora': (context) => const FlowersGalery(),
       },
     );
   }
