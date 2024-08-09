@@ -22,8 +22,8 @@ class DetailsScreen extends StatelessWidget {
               .animate()
               .fadeIn(duration: 600.ms, curve: Curves.easeOutQuad)
               .scale(
-                begin: Offset(0.5, 0.5),
-                end: Offset(1, 1),
+                begin: const Offset (0.5, 0.5),
+                end: const Offset(1, 1),
                 duration: 600.ms,
                 curve: Curves.easeOutBack,
               )

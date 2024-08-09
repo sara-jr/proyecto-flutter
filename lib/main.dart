@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomePage(),
         '/dates': (context) => const HollydayList(),
         '/details': (context) => const DetailsScreen(),
-        '/flora': (context) => const FlowersGalery(),
+        '/flora': (context) =>  FlowersGalery(),
       },
     );
   }
