@@ -27,6 +27,7 @@ class HollydayListState extends State<HollydayList> {
           .loadString('assets/hollydays.json'));
       newHollydays = List.from(rawJson.map((e) => Map<String, String>.from(e)));
     } catch (exception) {
+      print(exception);
       return;
     }
     setState(() {
@@ -51,16 +52,44 @@ class HollydayListState extends State<HollydayList> {
     );
   }
 
+  void sortItems(bool? value) {
+    if (value == null) {
+      return;
+    }
+    final sign = value ? 1 : -1;
+
+    setState(() {
+      hollydays.sort((Map<String, String> a, Map<String, String> b) =>
+          a['name']!.compareTo(b['name'] ?? '') * sign);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fechas'),
-      ),
-      body: ListView.builder(
-        itemBuilder: buildEntry,
-        itemCount: hollydays.length,
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Fechas'),
+        ),
+        body: Column(
+          children: [
+            DropdownButton(
+              borderRadius: BorderRadius.circular(10),
+              hint: const Text('Orden'),
+              items: const [
+                DropdownMenuItem<bool>(value: true, child: Text('Ascendente')),
+                DropdownMenuItem<bool>(
+                    value: false, child: Text('Descendente')),
+              ],
+              onChanged: sortItems,
+            ),
+            const SizedBox(height: 20),
+            ListView.builder(
+              itemBuilder: buildEntry,
+              itemCount: hollydays.length,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+            ),
+          ],
+        ));
   }
 }
