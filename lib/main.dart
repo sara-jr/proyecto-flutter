@@ -3,6 +3,7 @@ import 'package:integradora/details.dart';
 import 'package:integradora/flowers.dart';
 import 'package:integradora/home.dart';
 import 'package:integradora/hollydays.dart';
+import 'package:integradora/maps.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         '/dates': (context) => const HollydayList(),
         '/details': (context) => const DetailsScreen(),
         '/flora': (context) =>  FlowersGalery(),
+        '/maps' : (context) => MapSample()
       },
     );
   }

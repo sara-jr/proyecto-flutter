@@ -3,6 +3,7 @@ import 'package:integradora/utils.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -46,6 +47,9 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
                 onPressed: makeGoto('/flora', context),
                 child: const Text('Flora')),
+             ElevatedButton(
+                onPressed: makeGoto('/maps', context),
+                child: const Text('Mapa')),
             const SizedBox(
               height: 20,
             ),
