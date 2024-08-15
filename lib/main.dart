@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomePage(),
         '/dates': (context) => const HollydayList(),
         '/details': (context) => const DetailsScreen(),
-        '/flora': (context) =>  FlowersGalery(),
-        '/maps' : (context) => MapSample()
+        '/flora': (context) => FlowersGalery(),
+        '/maps': (context) => const MapSample()
       },
     );
   }

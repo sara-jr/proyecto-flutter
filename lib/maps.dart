@@ -25,6 +25,7 @@ class _MapSampleState extends State<MapSample> {
   void initState() {
     super.initState();
     _location = Location();
+    //_position = LatLng(0, 0);
     _getLocation();
   }
 
