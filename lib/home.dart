@@ -10,40 +10,40 @@ class HomePage extends StatelessWidget {
     showDialog(
         context: context,
         builder: (context) => Dialog.fullscreen(
-              child: Center(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     const Text('Cosas de México'),
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text('Verison 0.0 alfa'),
+                    const Text('Verison 0.0.1 alfa'),
                     const SizedBox(
                       height: 40,
                     ),
-                    BackButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
                     ExpansionTile(
-                      title: const Text("Más"),
+                      title: const Text(
+                        '¿Calificas la app?',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
                       children: [
-                        const Text(
-                          '¿Calificas nuestro servicio?',
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
                         RatingBar.builder(
+                            itemSize: 25,
                             initialRating: 0,
                             minRating: 0,
                             allowHalfRating: true,
                             itemCount: 5,
                             itemPadding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
-                            itemBuilder: (context, _) =>
-                                const Icon(Icons.star, color: Colors.cyan),
+                                const EdgeInsets.symmetric(horizontal: 2.0),
+                            itemBuilder: (context, _) => const Icon(
+                                  Icons.star,
+                                  color: Colors.cyan,
+                                ),
                             onRatingUpdate: (rating) => print(rating))
                       ],
                     ),
+                    BackButton(onPressed: () => Navigator.of(context).pop()),
                   ],
                 ),
               ),
