@@ -23,7 +23,27 @@ class HomePage extends StatelessWidget {
                     ),
                     BackButton(
                       onPressed: () => Navigator.of(context).pop(),
-                    )
+                    ),
+                    ExpansionTile(
+                      title: const Text("Más"),
+                      children: [
+                        const Text(
+                          '¿Calificas nuestro servicio?',
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                        RatingBar.builder(
+                            initialRating: 0,
+                            minRating: 0,
+                            allowHalfRating: true,
+                            itemCount: 5,
+                            itemPadding:
+                                const EdgeInsets.symmetric(horizontal: 4.0),
+                            itemBuilder: (context, _) =>
+                                const Icon(Icons.star, color: Colors.cyan),
+                            onRatingUpdate: (rating) => print(rating))
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -33,47 +53,22 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-                onPressed: makeGoto('/dates', context),
-                child: const Text('Fechas importantes')),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: makeGoto('/flora', context),
-                child: const Text('Flora')),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: makeGoto('/maps', context),
-                child: const Text('Mapa')),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: () => showAboutDialog(context),
-                child: const Text('Acerca de la app')),
-            const SizedBox(height: 40),
-            const Text(
-              '¿Calificas nuestro servicio?',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            RatingBar.builder(
-                initialRating: 0,
-                minRating: 0,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                itemBuilder: (context, _) =>
-                    const Icon(Icons.star, color: Colors.cyan),
-                onRatingUpdate: (rating) => print(rating))
-          ],
-        ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: [
+          IconButton(
+              onPressed: makeGoto('/dates', context),
+              icon: const Icon(Icons.calendar_month)),
+          IconButton(
+              onPressed: makeGoto('/flora', context),
+              icon: const Icon(Icons.local_florist)),
+          IconButton(
+              onPressed: makeGoto('/maps', context),
+              icon: const Icon(Icons.map)),
+          IconButton(
+              onPressed: () => showAboutDialog(context),
+              icon: const Icon(Icons.info)),
+        ],
       ),
     );
   }
