@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:integradora/utils.dart';
 
 class HollydayList extends StatefulWidget {
@@ -45,8 +44,11 @@ class HollydayListState extends State<HollydayList> {
       child: Card(
         child: ListTile(
           leading: const Icon(Icons.calendar_today),
-          title: Text(hollydays[index]['date'] ?? 'Error'),
-          subtitle: Text(hollydays[index]['name'] ?? 'Error'),
+          title: Text(hollydays[index]['date']!),
+          subtitle: Text(
+            hollydays[index]['name']!,
+            style: const TextStyle(fontSize: 10),
+          ),
         ),
       ),
     );
@@ -70,26 +72,29 @@ class HollydayListState extends State<HollydayList> {
         appBar: AppBar(
           title: const Text('Fechas'),
         ),
-        body: Column(
-          children: [
-            DropdownButton(
-              borderRadius: BorderRadius.circular(10),
-              hint: const Text('Orden'),
-              items: const [
-                DropdownMenuItem<bool>(value: true, child: Text('Ascendente')),
-                DropdownMenuItem<bool>(
-                    value: false, child: Text('Descendente')),
+        body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                DropdownButton(
+                  borderRadius: BorderRadius.circular(10),
+                  hint: const Text('Orden'),
+                  items: const [
+                    DropdownMenuItem<bool>(
+                        value: true, child: Text('Ascendente')),
+                    DropdownMenuItem<bool>(
+                        value: false, child: Text('Descendente')),
+                  ],
+                  onChanged: sortItems,
+                ),
+                const SizedBox(height: 10),
+                ListView.builder(
+                  itemBuilder: buildEntry,
+                  itemCount: hollydays.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                ),
               ],
-              onChanged: sortItems,
-            ),
-            const SizedBox(height: 20),
-            ListView.builder(
-              itemBuilder: buildEntry,
-              itemCount: hollydays.length,
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-            ),
-          ],
-        ));
+            )));
   }
 }
