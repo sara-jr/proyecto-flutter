@@ -1,10 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart' as CarouselPkg;
 
 class FlowersGalery extends StatefulWidget {
-  FlowersGalery({super.key});
+  const FlowersGalery({super.key});
   @override
   _FlowersGaleryState createState() => _FlowersGaleryState();
 }
