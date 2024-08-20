@@ -17,7 +17,7 @@ class MapSample extends StatefulWidget {
 class _MapSampleState extends State<MapSample> {
   final LatLng _destination =
       const LatLng(20.39870865644992, -101.2231068428173); // Coordenadas UTSOE
-  late LatLng _position;
+  LatLng? _position;
   late Location _location;
   List<LatLng> _routePoints = [];
 
@@ -25,13 +25,12 @@ class _MapSampleState extends State<MapSample> {
   void initState() {
     super.initState();
     _location = Location();
-    //_position = LatLng(0, 0);
     _getLocation();
   }
 
   Future<void> _getRoute() async {
     final url =
-        'http://router.project-osrm.org/route/v1/driving/${_position.longitude},${_position.latitude};${_destination.longitude},${_destination.latitude}?geometries=geojson';
+        'http://router.project-osrm.org/route/v1/driving/${_position!.longitude},${_position!.latitude};${_destination.longitude},${_destination.latitude}?geometries=geojson';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode != 200) {
@@ -48,7 +47,13 @@ class _MapSampleState extends State<MapSample> {
   }
 
   Future<void> _getLocation() async {
+    final permision = await _location.hasPermission();
+    if (permision == PermissionStatus.denied ||
+        permision == PermissionStatus.deniedForever) {
+      await _location.requestPermission();
+    }
     final locationData = await _location.getLocation();
+    print(locationData);
     setState(() {
       _position = LatLng(locationData.latitude!, locationData.longitude!);
     });
@@ -58,7 +63,7 @@ class _MapSampleState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: makeAppbar('OpenStreetMap en Flutter'),
+      appBar: makeAppbar('Mapa'),
       body: _position == null
           ? const Center(child: CircularProgressIndicator())
           : FlutterMap(
@@ -90,7 +95,7 @@ class _MapSampleState extends State<MapSample> {
                     Marker(
                       width: 80.0,
                       height: 80.0,
-                      point: _position,
+                      point: _position!,
                       builder: (ctx) => const Column(children: [
                         Text('Estas aqui'),
                         Icon(
